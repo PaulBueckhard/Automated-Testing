@@ -10,3 +10,8 @@ class TestNerClient(unittest.TestCase):
         ner = NamedEntityClient()
         ents = ner.get_ents("")
         self.assertIsInstance(ents, dict)
+    
+    def test_get_ents_returns_list_given_nonempty_string(self):
+        ner = NamedEntityClient()
+        ents = ner.get_ents("Berlin is the capital of Germany")
+        self.assertIsInstance(ents, dict)
