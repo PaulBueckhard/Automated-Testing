@@ -50,9 +50,18 @@ class TestNerClient(unittest.TestCase):
 
     def test_get_ents_given_spacy_language_is_returned(self):
         model = NerModelTestDouble("eng")
-        doc_ents = [{"text": "sign Language", "label_": "LANGUAGE"}]
+        doc_ents = [{"text": "sign language", "label_": "LANGUAGE"}]
         model.returns_doc_ents(doc_ents)
         ner = NamedEntityClient(model)
         result = ner.get_ents("...")
         expected_result = { "ents": [{"ent": "sign language", "label": "Language"}], "html": "" }
+        self.assertListEqual(result["ents"], expected_result["ents"])
+
+    def test_get_ents_given_spacy_gpe_is_returned(self):
+        model = NerModelTestDouble("eng")
+        doc_ents = [{"text": "Australia", "label_": "GPE"}]
+        model.returns_doc_ents(doc_ents)
+        ner = NamedEntityClient(model)
+        result = ner.get_ents("...")
+        expected_result = { "ents": [{"ent": "Australia", "label": "Location"}], "html": "" }
         self.assertListEqual(result["ents"], expected_result["ents"])
