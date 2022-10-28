@@ -1,4 +1,5 @@
 import unittest
+from ner_client import NamedEntityClient
 
 class TestNerClient(unittest.TestCase):
 
