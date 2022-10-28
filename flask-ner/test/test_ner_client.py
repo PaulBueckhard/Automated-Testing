@@ -16,6 +16,7 @@ class TestNerClient(unittest.TestCase):
     
     def test_get_ents_returns_dictionary_given_nonempty_string(self):
         model = NerModelTestDouble("eng")
+        model.returns_doc_ents([])
         ner = NamedEntityClient(model)
         ents = ner.get_ents("Berlin is the capital of Germany")
         self.assertIsInstance(ents, dict)
@@ -24,7 +25,7 @@ class TestNerClient(unittest.TestCase):
         model = NerModelTestDouble("eng")
         doc_ents = [{"text": "Nikola Tesla", "label_": "PERSON"}]
         model.returns_doc_ents(doc_ents)
-        ner = NamedEntityClient(model) 
+        ner = NamedEntityClient(model)
         result = ner.get_ents("...")
         expected_result = { "ents": [{"ent": "Nikola Tesla", "label": "Person"}], "html": "" }
         self.assertListEqual(result["ents"], expected_result["ents"])
