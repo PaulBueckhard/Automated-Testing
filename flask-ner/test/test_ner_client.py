@@ -14,7 +14,8 @@ class TestNerClient(unittest.TestCase):
         ents = ner.get_ents("")
         self.assertIsInstance(ents, dict)
     
-    def test_get_ents_returns_list_given_nonempty_string(self):
+    def test_get_ents_returns_dictionary_given_nonempty_string(self):
+        model = NerModelTestDouble("eng")
         ner = NamedEntityClient(model)
         ents = ner.get_ents("Berlin is the capital of Germany")
         self.assertIsInstance(ents, dict)

@@ -20,5 +20,5 @@ class DocTestDouble:
 
 class SpanTestDouble:
     def __init__(self, text, label):
-        self.text = texts
+        self.text = text
         self.label = label
