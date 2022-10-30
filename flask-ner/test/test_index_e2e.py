@@ -18,5 +18,9 @@ class e2eTests(unittest.TestCase):
         heading = self._find("heading").text
         self.assertEqual("Named Entity Finder", heading)
 
+    def test_page_has_input_for_text(self):
+        input_element = self._find("input-text")
+        self.assertIsNotNone(input_element)
+
     def _find(self, val):
-        return self.driver.find_element(By.CSS_SELECTOR, f'[data-test-id="{val}"]')
+        return self.driver.find_element(By.CSS_SELECTOR, f"[data-test-id='{val}']")
