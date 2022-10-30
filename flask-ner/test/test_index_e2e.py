@@ -4,7 +4,7 @@ from selenium import webdriver
 class e2eTests(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path=r"/Program Files/Google/Chrome/Application/chrome")
+        self.driver = webdriver.Chrome(executable_path=r'/webdrivers/chromedriver')
         self.driver.get("http://localhost:5000")
 
     def tearDown(self):
