@@ -1,7 +1,14 @@
-class NerModelTestDouble:
+from flask_ner.ner_client import NamedEntityClient
+
+class NerModelTestDouble(NamedEntityClient):
 
     def __init__(self, model):
         self.model = model
+
+    def get_ents(self, sentence):
+        doc = self.model(sentence)
+        entities = [{ 'ent': ent.text, 'label': self.map_label(ent.label_) } for ent in doc.ents]
+        return { 'ents': entities, 'html': "" }
 
     def returns_doc_ents(self, ents):
         self.ents = ents 

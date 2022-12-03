@@ -2,7 +2,7 @@ import unittest
 import json
 from flask import request
 
-from app import app
+from flask_ner.app import app
 
 class TestApi(unittest.TestCase):
 
