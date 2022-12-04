@@ -3,6 +3,7 @@ import json
 import spacy
 from spacy import displacy
 
+#from flask_ner.ner_client import NamedEntityClient
 from ner_client import NamedEntityClient
 
 app = Flask(__name__)
